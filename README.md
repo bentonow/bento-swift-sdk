@@ -3,6 +3,7 @@
 <p align="center"><img src="/art/bento-swift-sdk.png" alt="Logo Bento Swift SDK"></p>
 
 
+[![Test Suite](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml/badge.svg)](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml)
 
 > [!TIP]
 > Need help? Join our [discord](https://discord.com/invite/ssXXFRmt5F) or email jesse@bentonow.com for personalized support.
