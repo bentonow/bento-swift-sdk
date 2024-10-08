@@ -21,6 +21,8 @@ let package = Package(
             sources: ["BentoAPI.swift"]),
         .testTarget(
             name: "BentoSwiftSDKTests",
-            dependencies: ["BentoSwiftSDK"]),
+            dependencies: ["BentoSwiftSDK"],
+            path: "Tests",
+            sources: ["BentoSwiftSDKTests.swift"]),
     ]
 )
