@@ -1,4 +1,6 @@
-# Bento Swift SDK
+
+
+<p align="center"><img src="/art/bento-swift-sdk.png" alt="Logo Bento Swift SDK"></p>
 
 ## Overview
 
