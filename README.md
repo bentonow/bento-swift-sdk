@@ -9,9 +9,11 @@
 
 The Bento Swift SDK makes it quick and easy to build an excellent analytics experience in your iOS application. We provide powerful and customizable APIs that can be used out-of-the-box to track your users' behavior and manage subscribers. We also expose low-level APIs so that you can build fully custom experiences.
 
-Get started with our [📚 integration guides](https://docs.bentonow.com/) and [example projects](https://github.com/bentonow/), or [📘 browse the SDK reference](https://docs.bentonow.com/subscribers).
+Get started with our [📚 integration guides](https://docs.bentonow.com/) and [example projects](https://github.com/bentonow/bento_ios_example), or [📘 browse the SDK reference](https://docs.bentonow.com/subscribers).
 
-> Updating to a newer version of the SDK? See our [migration guide](https://github.com/bentonow/bento-swift-sdk/blob/master/MIGRATING.md) and [changelog](https://github.com/bentonow/bento-swift-sdk/blob/master/CHANGELOG.md).
+
+❤️ Thank you [@ziptied](*https%3A//github.com/ziptied*) for your contribution.
+
 
 Table of contents
 =================
