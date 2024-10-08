@@ -117,32 +117,40 @@ public actor BentoAPI {
             let decoder = JSONDecoder()
             return try decoder.decode(SubscriberResponse.self, from: data)
         }
+    
+    public func executeCommand(_ command: SubscriberCommand) async throws -> Int {
+        let url = baseURL.appendingPathComponent("/api/v1/fetch/commands")
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
+        components.queryItems = [URLQueryItem(name: "site_uuid", value: siteUUID)]
         
-        public func executeCommand(_ command: SubscriberCommand) async throws -> SubscriberResponse {
-            let url = baseURL.appendingPathComponent("/api/v1/fetch/commands")
-            var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-            components.queryItems = [URLQueryItem(name: "site_uuid", value: siteUUID)]
-            
-            var request = URLRequest(url: components.url!)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            
-            let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
-            request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
-            
-            let encoder = JSONEncoder()
-            request.httpBody = try encoder.encode(["command": [command]])
-            
-            let (data, response) = try await session.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                throw URLError(.badServerResponse)
-            }
-            
-            let decoder = JSONDecoder()
-            return try decoder.decode(SubscriberResponse.self, from: data)
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
+        request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
+        
+        let encoder = JSONEncoder()
+        request.httpBody = try encoder.encode(["command": [command]])
+        
+        let (data, response) = try await session.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            throw URLError(.badServerResponse)
         }
+        
+        let decoder = JSONDecoder()
+        let responseDict = try decoder.decode([String: Int].self, from: data)
+        
+        guard let result = responseDict["results"] else {
+            throw URLError(.cannotParseResponse)
+        }
+        
+        return result
+    }
+        
+    
     }
 
 public struct SubscriberResponse: Codable {

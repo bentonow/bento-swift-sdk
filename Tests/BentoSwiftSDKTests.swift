@@ -1,9 +1,9 @@
 import XCTest
-@testable import BentoSwiftSDK // Replace with the name of the module containing BentoAPI
+@testable import BentoSwiftSDK
 
-extension SubscriberResponse: @unchecked Sendable {}
-extension SubscriberData: @unchecked Sendable {}
-extension SubscriberAttributes: @unchecked Sendable {}
+extension SubscriberResponse: @unchecked @retroactive Sendable {}
+extension SubscriberData: @unchecked @retroactive Sendable {}
+extension SubscriberAttributes: @unchecked @retroactive Sendable {}
 
 class BentoAPITests: XCTestCase {
     
@@ -85,23 +85,20 @@ class BentoAPITests: XCTestCase {
             }
         }
         
-        func testExecuteCommand() async throws {
-            let command = SubscriberCommand.addTag(email: "test@example.com", tag: "TestTag")
-            
-            do {
-                let response = try await api.executeCommand(command)
-                XCTAssertNotNil(response.data)
-                XCTAssertEqual(response.data.type, "subscriber")
-                XCTAssertEqual(response.data.attributes.email, "test@example.com")
-                XCTAssertTrue(response.data.attributes.cachedTagIds.contains("TestTag"))
-            } catch let error as URLError {
-                if error.code.rawValue == -1011 {
-                    print("Authentication failed as expected. Ensure valid credentials are used for actual API calls.")
-                } else {
-                    XCTFail("Unexpected URLError: \(error.localizedDescription)")
-                }
-            } catch {
-                XCTFail("Unexpected error: \(error.localizedDescription)")
+    func testExecuteCommand() async throws {
+        let command = SubscriberCommand.addTag(email: "test@example.com", tag: "TestTag")
+        
+        do {
+            let result = try await api.executeCommand(command)
+            XCTAssertGreaterThan(result, 0, "Expected a positive number of affected subscribers")
+        } catch let error as URLError {
+            if error.code.rawValue == -1011 {
+                print("Authentication failed as expected. Ensure valid credentials are used for actual API calls.")
+            } else {
+                XCTFail("Unexpected URLError: \(error.localizedDescription)")
             }
+        } catch {
+            XCTFail("Unexpected error: \(error.localizedDescription)")
         }
+    }
 }
