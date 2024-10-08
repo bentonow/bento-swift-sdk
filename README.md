@@ -40,6 +40,8 @@ Table of contents
 
 The Bento Swift SDK requires iOS 13.0+ and Swift 5.5+.
 
+Bento Account for a valid SITE_UUID, PUBLISHABLE_KEY & SECRET_KEY.
+
 ## Getting started
 
 ### Installation
