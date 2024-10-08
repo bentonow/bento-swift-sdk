@@ -12,7 +12,7 @@ The Bento Swift SDK makes it quick and easy to build an excellent analytics expe
 Get started with our [📚 integration guides](https://docs.bentonow.com/) and [example projects](https://github.com/bentonow/bento_ios_example), or [📘 browse the SDK reference](https://docs.bentonow.com/subscribers).
 
 
-❤️ Thank you [@ziptied](*https%3A//github.com/ziptied*) for your contribution.
+❤️ Thank you [@ziptied](https://github.com/ziptied) for your contribution.
 
 
 Table of contents
@@ -201,8 +201,8 @@ All API methods are designed to be called from any thread. The completion handle
 
 ## Contributing
 
-We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bentonow/bento-swift-sdk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](CODE_OF_CONDUCT.md) code of conduct.
 
 ## License
 
-The Bento SDK for Swift is available as open source under the terms of the [MIT License](LICENSE).
+The Bento SDK for Swift is available as open source under the terms of the [MIT License](LICENSE.md).
