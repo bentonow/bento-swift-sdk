@@ -1,22 +1,54 @@
-# Bento Swift SDK
 
-## Overview
 
-The Bento Swift SDK provides a convenient way to interact with the Bento API in Swift applications. It covers all endpoints specified in the Bento API v1 documentation, including batch operations, fetch operations, commands execution, statistics retrieval, and experimental endpoints.
+<p align="center"><img src="/art/bento-swift-sdk.png" alt="Logo Bento Swift SDK"></p>
 
-## Installation
 
-### Swift Package Manager
 
-BentoAPI can be installed through [Swift Package Manager](https://swift.org/package-manager/).
+> [!TIP]
+> Need help? Join our [discord](https://discord.com/invite/ssXXFRmt5F) or email jesse@bentonow.com for personalized support.
 
-To add BentoAPI to your Xcode project, select File > Swift Packages > Add Package Dependency and enter the repository URL:
+The Bento Swift SDK makes it quick and easy to build an excellent analytics experience in your iOS application. We provide powerful and customizable APIs that can be used out-of-the-box to track your users' behavior and manage subscribers. We also expose low-level APIs so that you can build fully custom experiences.
 
-```
-https://github.com/bentonow/bento-swift-sdk.git
-```
+Get started with our [📚 integration guides](https://docs.bentonow.com/) and [example projects](https://github.com/ziptied/bento_ios_example), or [📘 browse the SDK reference](https://docs.bentonow.com/subscribers).
 
-Alternatively, you can add it to your `Package.swift` file:
+
+❤️ Thank you [@ziptied](https://github.com/ziptied) for your contribution.
+
+
+Table of contents
+=================
+
+<!--ts-->
+   * [Features](#features)
+   * [Requirements](#requirements)
+   * [Getting started](#getting-started)
+      * [Installation](#installation)
+      * [Initialization](#initialization)
+   * [Modules](#modules)
+   * [Thread Safety](#thread-safety)
+   * [Contributing](#contributing)
+   * [License](#license)
+<!--te-->
+
+## Features
+
+* **Simple event tracking**: We make it easy for you to track user events and behavior in your application.
+* **Subscriber management**: Easily add, update, and remove subscribers from your Bento account.
+* **Custom fields**: Track and update custom fields for your subscribers to store additional data.
+* **Email validation**: Validate email addresses to ensure data quality.
+* **Swift concurrency**: Built with modern Swift features for efficient asynchronous operations.
+
+## Requirements
+
+The Bento Swift SDK requires iOS 13.0+ and Swift 5.5+.
+
+Bento Account for a valid SITE_UUID, PUBLISHABLE_KEY & SECRET_KEY.
+
+## Getting started
+
+### Installation
+
+You can install the Bento Swift SDK using Swift Package Manager. Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
@@ -24,18 +56,19 @@ dependencies: [
 ]
 ```
 
+### Initialization
 
-## Initialization
-
-To start using the Bento API, initialize the `BentoAPI` actor with your site UUID, username(BENTO_PUBLISHABLE_KEY), and password(BENTO_SECRET_KEY):
+Initialize the Bento client:
 
 ```swift
 let bentoAPI = BentoAPI(siteUUID: "your-site-uuid", username: "your-username", password: "your-password")
 ```
 
-## Submitting Events
+## Modules
 
-You can submit events to Bento using the `submitEvents` function. Here's an example:
+### Event Submission
+
+Submit events to Bento.
 
 ```swift
 let event = BentoEvent(type: "purchase", email: "user@example.com", fields: ["product": "T-shirt"], details: ["size": "M"], date: Date())
@@ -47,11 +80,9 @@ do {
 }
 ```
 
-This function allows you to batch submit multiple events at once.
+### Email Validation
 
-## Validating Email
-
-You can validate an email address using the `validateEmail` function:
+Validate an email address.
 
 ```swift
 do {
@@ -62,11 +93,9 @@ do {
 }
 ```
 
-This function returns a boolean indicating whether the email is valid.
+### Subscriber Management
 
-## Fetching Subscriber Information
-
-To fetch subscriber information, use the `fetchSubscriber` function:
+Fetch subscriber information.
 
 ```swift
 do {
@@ -78,13 +107,11 @@ do {
 }
 ```
 
-You can fetch a subscriber by email or UUID.
+### Subscriber Commands
 
-## Executing Subscriber Commands
+Execute various subscriber commands.
 
-The SDK supports various subscriber commands. Here are examples for each:
-
-### Add Tag
+#### Add Tag
 
 ```swift
 let command = SubscriberCommand.addTag(email: "user@example.com", tag: "VIP")
@@ -96,7 +123,7 @@ do {
 }
 ```
 
-### Remove Tag
+#### Remove Tag
 
 ```swift
 let command = SubscriberCommand.removeTag(email: "user@example.com", tag: "VIP")
@@ -108,7 +135,7 @@ do {
 }
 ```
 
-### Add Field
+#### Add Field
 
 ```swift
 let command = SubscriberCommand.addField(email: "user@example.com", field: "favorite_color", value: "blue")
@@ -120,7 +147,7 @@ do {
 }
 ```
 
-### Remove Field
+#### Remove Field
 
 ```swift
 let command = SubscriberCommand.removeField(email: "user@example.com", field: "favorite_color")
@@ -132,7 +159,7 @@ do {
 }
 ```
 
-### Subscribe
+#### Subscribe
 
 ```swift
 let command = SubscriberCommand.subscribe(email: "user@example.com")
@@ -144,7 +171,7 @@ do {
 }
 ```
 
-### Unsubscribe
+#### Unsubscribe
 
 ```swift
 let command = SubscriberCommand.unsubscribe(email: "user@example.com")
@@ -156,7 +183,7 @@ do {
 }
 ```
 
-### Change Email
+#### Change Email
 
 ```swift
 let command = SubscriberCommand.changeEmail(oldEmail: "olduser@example.com", newEmail: "newuser@example.com")
@@ -168,18 +195,14 @@ do {
 }
 ```
 
-These examples demonstrate how to use each command supported by the Bento API. 
-
-Always handle potential errors when executing these commands.
-
 ## Thread Safety
 
 All API methods are designed to be called from any thread. The completion handlers are always called on the main thread, making it safe to update your UI directly from within the completion handler.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/bentonow/bento-swift-sdk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bentonow/bento-swift-sdk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](CODE_OF_CONDUCT.md) code of conduct.
 
 ## License
 
-The package is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The Bento SDK for Swift is available as open source under the terms of the [MIT License](LICENSE.md).
