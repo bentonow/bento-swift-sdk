@@ -1,9 +1,9 @@
 import XCTest
 @testable import BentoSwiftSDK
 
-extension SubscriberResponse: @unchecked @retroactive Sendable {}
-extension SubscriberData: @unchecked @retroactive Sendable {}
-extension SubscriberAttributes: @unchecked @retroactive Sendable {}
+extension SubscriberResponse: @unchecked  Sendable {}
+extension SubscriberData: @unchecked  Sendable {}
+extension SubscriberAttributes: @unchecked  Sendable {}
 
 class BentoAPITests: XCTestCase {
     
