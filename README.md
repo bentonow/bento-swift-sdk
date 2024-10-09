@@ -1,9 +1,5 @@
-
-
-<p align="center"><img src="/art/bento-swift-sdk.png" alt="Logo Bento Swift SDK"></p>
-
-
-[![Test Suite](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml)
+# Bento Swift SDK
+<img align="right" src="https://app.bentonow.com/brand/logoanim.gif">
 
 > [!TIP]
 > Need help? Join our [discord](https://discord.com/invite/ssXXFRmt5F) or email jesse@bentonow.com for personalized support.
@@ -12,9 +8,9 @@ The Bento Swift SDK makes it quick and easy to build an excellent analytics expe
 
 Get started with our [📚 integration guides](https://docs.bentonow.com/) and [example projects](https://github.com/ziptied/bento_ios_example), or [📘 browse the SDK reference](https://docs.bentonow.com/subscribers).
 
-
 ❤️ Thank you [@ziptied](https://github.com/ziptied) for your contribution.
 
+[![Test Suite](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ziptied/bento-swift-sdk/actions/workflows/tests.yml)
 
 Table of contents
 =================
