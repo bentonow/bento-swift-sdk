@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
@@ -16,9 +16,13 @@ let package = Package(
     targets: [
         .target(
             name: "BentoSwiftSDK",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/BentoAPI",
+            sources: ["BentoAPI.swift"]),
         .testTarget(
             name: "BentoSwiftSDKTests",
-            dependencies: ["BentoSwiftSDK"]),
+            dependencies: ["BentoSwiftSDK"],
+            path: "Tests",
+            sources: ["BentoSwiftSDKTests.swift"]),
     ]
 )
