@@ -43,6 +43,7 @@ public actor BentoAPI {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("bento-swift-\(siteUUID)", forHTTPHeaderField: "User-Agent")
         
         let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
         request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
@@ -79,6 +80,7 @@ public actor BentoAPI {
             var request = URLRequest(url: components.url!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("bento-swift-\(siteUUID)", forHTTPHeaderField: "User-Agent")
             
             let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
             request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
@@ -104,6 +106,7 @@ public actor BentoAPI {
             var request = URLRequest(url: components.url!)
             request.httpMethod = "GET"
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("bento-swift-\(siteUUID)", forHTTPHeaderField: "User-Agent")
             
             let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
             request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
@@ -127,6 +130,7 @@ public actor BentoAPI {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("bento-swift-\(siteUUID)", forHTTPHeaderField: "User-Agent")
         
         let credentials = "\(username):\(password)".data(using: .utf8)!.base64EncodedString()
         request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
